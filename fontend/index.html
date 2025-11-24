@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontend HTML Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e9ffe9;
+            border: 1px solid #b6efb6;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Frontend HTML → Backend PHP</h2>
+    <p>Bấm nút để gọi API PHP:</p>
+
+    <button onclick="callApi()">Gọi API</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function callApi() {
+    // 👉 Thay đường dẫn này bằng domain API 000webhost của bạn
+    fetch("http://phuongdinh.somee.com//hihi.php")
+        .then(res => res.json())
+        .then(data => {
+            let box = document.getElementById("result");
+            box.style.display = "block";
+            box.innerHTML = "Trạng thái: " + data.status + "<br>Thông báo: " + data.message;
+        })
+        .catch(err => alert("Lỗi kết nối API: " + err));
+}
+</script>
+
+</body>
+</html>
